@@ -121,15 +121,15 @@ def core_value_decode(origin):
 def main(workflow):
     operation, source = workflow.args[0:2]
 
-    if operation == '-d':
-        output = core_value_decode(source)
+    if operation == '-e':
+        output = core_value_encode(source)
     else:
         try:
-            output = core_value_encode(source)
+            output = core_value_decode(source)
         except:
             output = u'解码失败，请检查是否规范'
 
-    workflow.add_item(title=output, subtitle=source, arg=output, valid=True)
+    workflow.add_item(title=output, arg=output, valid=True)
     workflow.send_feedback()
 
 
